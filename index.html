@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marae Shopping List</title>
+<meta name="description" content="Scaled shopping lists and checklists for marae events.">
+<meta name="theme-color" content="#6b4226">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Shopping List">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1 onclick="Router.go('home')" role="button">🛒 Marae Shopping List</h1>
+  <nav>
+    <button class="nav-btn" onclick="Router.go('home')">Events</button>
+    <button class="nav-btn" onclick="Router.go('items')">Manage Items</button>
+    <button class="nav-btn" onclick="Router.go('recipes')">Recipes</button>
+    <button class="nav-btn" onclick="Router.go('data')">Backup / Share</button>
+    <button id="install-btn" class="nav-btn" style="display:none">⬇️ Install app</button>
+    <span id="sync-status" class="sync-status" title="Sync status"></span>
+  </nav>
+</header>
+
+<main id="app">
+  <div class="empty-state">Loading…</div>
+</main>
+
+<div id="modal-root"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/seed-data.js"></script>
+<script src="js/seed-recipes.js"></script>
+<script src="js/store.js"></script>
+<script src="js/scaling.js"></script>
+<script src="js/render.js"></script>
+<script src="js/router.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
