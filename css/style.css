@@ -99,12 +99,14 @@ button.secondary { background: #eee6d8; color: var(--brown-dark); }
 button.secondary:hover { background: #e1d6c0; }
 button.danger { background: var(--danger); color: white; }
 button.danger:hover { background: #922f1c; }
-button.icon-btn {
+button.icon-btn, a.icon-btn {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 1.1rem;
   padding: 4px 6px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 input, select {

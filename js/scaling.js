@@ -27,6 +27,7 @@ const Scaling = {
       name: item.name,
       category: item.category,
       qty: this.suggestedQty(item, people, days),
+      unit: item.unit || '',
       unitPrice: item.unitPrice || null,
       actualPrice: null,
       checked: false

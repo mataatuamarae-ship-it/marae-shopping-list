@@ -641,7 +641,7 @@ function ViewItems() {
     const table = el('table', { class: 'manage-table' }, [
       el('tr', {}, [
         el('th', {}, 'Item'), el('th', {}, 'Scaling'), el('th', {}, 'Base qty'), el('th', {}, 'Unit price'),
-        el('th', { style: 'text-align:center' }, 'Default list'), el('th', {}, '')
+        el('th', { style: 'text-align:center' }, 'Default list'), el('th', {}, ''), el('th', {}, '')
       ])
     ]);
     items.forEach(it => {
@@ -656,6 +656,9 @@ function ViewItems() {
         el('td', {}, String(it.baseQty)),
         el('td', {}, it.unitPrice ? fmtMoney(it.unitPrice) : '—'),
         el('td', { style: 'text-align:center' }, defaultCb),
+        el('td', {}, it.paknsaveUrl
+          ? el('a', { href: it.paknsaveUrl, target: '_blank', rel: 'noopener', class: 'icon-btn', title: 'View on PAK’nSAVE' }, '🛒')
+          : ''),
         el('td', {}, [
           el('button', { class: 'icon-btn', title: 'Edit', onclick: () => openItemEditModal(it) }, '✏️'),
           el('button', { class: 'icon-btn', title: 'Delete', onclick: () => { if (confirm(`Delete "${it.name}" from the master list?`)) { Store.deleteItem(it.id); renderApp(Router.current()); } } }, '🗑️')
@@ -687,6 +690,7 @@ function openItemEditModal(item) {
   ]);
   const baseQtyInput = el('input', { type: 'number', min: '0', step: '0.5', value: item ? item.baseQty : 1 });
   const priceInput = el('input', { type: 'number', min: '0', step: '0.01', value: item && item.unitPrice ? item.unitPrice : '' });
+  const paknsaveUrlInput = el('input', { type: 'url', placeholder: 'https://www.paknsave.co.nz/shop/product/...', value: item && item.paknsaveUrl ? item.paknsaveUrl : '' });
   const defaultListCb = el('input', { type: 'checkbox' });
   defaultListCb.checked = !item || item.inDefaultList !== false;
 
@@ -700,6 +704,7 @@ function openItemEditModal(item) {
       baseQtyInput
     ]),
     el('div', { class: 'field mb8' }, [el('label', {}, 'Unit price ($, optional — used to estimate cost)'), priceInput]),
+    el('div', { class: 'field mb8' }, [el('label', {}, 'PAK’nSAVE link (optional)'), paknsaveUrlInput]),
     el('label', { class: 'row mb8', style: 'align-items:center; gap:8px; cursor:pointer;' }, [
       defaultListCb, el('span', {}, 'Include in default list (added automatically to new events)')
     ]),
@@ -718,6 +723,7 @@ function openItemEditModal(item) {
               scaling: scalingSelect.value,
               baseQty: parseFloat(baseQtyInput.value) || 0,
               unitPrice: priceInput.value ? parseFloat(priceInput.value) : null,
+              paknsaveUrl: paknsaveUrlInput.value.trim() || null,
               inDefaultList: defaultListCb.checked
             };
             if (isNew) Store.addItem(payload);

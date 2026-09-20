@@ -7,7 +7,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 17,
     "unitPrice": 8.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5045752_ea_000pns?name=potatoes"
   },
   {
     "category": "Pantry",
@@ -15,7 +16,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 20,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5303373_ea_000pns?name=morning-harvest-colony-size-7-eggs"
   },
   {
     "category": "Vegetables",
@@ -23,7 +25,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 15,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5026217_ea_000pns?name=crown-pumpkin"
   },
   {
     "category": "Pantry",
@@ -31,7 +34,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 8,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Vegetables",
@@ -39,7 +43,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 3,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Pantry",
@@ -47,7 +52,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 2,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5017042_ea_000pns?name=pump-spring-water-bottles"
   },
   {
     "category": "Vegetables",
@@ -55,7 +61,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 3,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5045845_ea_000pns?name=brown-onions"
   },
   {
     "category": "Pantry",
@@ -63,7 +70,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 1.49,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5012081_ea_000pns?name=raro-favourites-lemonade-flavoured-beverage-mix"
   },
   {
     "category": "Vegetables",
@@ -71,7 +79,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 10,
     "unitPrice": 2.59,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5039960_ea_000pns?name=green-cabbage"
   },
   {
     "category": "Pantry",
@@ -79,7 +88,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 2,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5001714_ea_000pns?name=blue-milk-powder"
   },
   {
     "category": "Vegetables",
@@ -87,7 +97,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 6,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5040009_ea_000pns?name=spring-onions"
   },
   {
     "category": "Pantry",
@@ -95,7 +106,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 6,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5240705_ea_000pns?name=nescafe-classic-fine-blend-instant-coffee"
   },
   {
     "category": "Vegetables",
@@ -103,7 +115,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 6,
     "unitPrice": 1.69,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5047010_ea_000pns?name=fancy-green-lettuce"
   },
   {
     "category": "Pantry",
@@ -111,7 +124,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 4,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5002524_ea_000pns?name=bell-original-black-tea-bags"
   },
   {
     "category": "Vegetables",
@@ -119,7 +133,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 6,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5040098_kgm_000pns?name=red-tomatoes"
   },
   {
     "category": "Pantry",
@@ -127,7 +142,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 2,
     "unitPrice": 2.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5011855_ea_000pns"
   },
   {
     "category": "Vegetables",
@@ -135,7 +151,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5028889_ea_000pns?name=telegraph-cucumber"
   },
   {
     "category": "Pantry",
@@ -143,7 +160,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 2,
     "unitPrice": 5.0,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5035008_ea_000pns?name=sanitarium-weet-bix-breakfast-cereal"
   },
   {
     "category": "Vegetables",
@@ -151,7 +169,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5046505_ea_000pns?name=green-capsicum"
   },
   {
     "category": "Pantry",
@@ -159,7 +178,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 5.89,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5002767_ea_000pns?name=chelsea-golden-syrup"
   },
   {
     "category": "Vegetables",
@@ -167,7 +187,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5045848_kgm_000pns?name=red-onions"
   },
   {
     "category": "Pantry",
@@ -175,7 +196,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5003835_ea_000pns?name=plum-jam"
   },
   {
     "category": "Pantry",
@@ -183,7 +205,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5009059_ea_000pns?name=wattie's-tomato-sauce"
   },
   {
     "category": "Pantry",
@@ -191,7 +214,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5003826_ea_000pns?name=pams-soy-sauce"
   },
   {
     "category": "Fruit",
@@ -199,7 +223,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": 32.0,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Pantry",
@@ -207,7 +232,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5003462_ea_000pns?name=trident-original-sweet-chilli-sauce"
   },
   {
     "category": "Fruit",
@@ -215,7 +241,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": 20.0,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Pantry",
@@ -223,7 +250,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5013434_ea_000pns?name=coconut-cream"
   },
   {
     "category": "Fruit",
@@ -231,7 +259,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Pantry",
@@ -239,7 +268,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5019637_ea_000pns?name=pams-whole-egg-mayonnaise"
   },
   {
     "category": "Fruit",
@@ -247,23 +277,26 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5039976_kgm_000pns?name=green-kiwifruit"
   },
   {
     "category": "Pantry",
     "name": "Cooking Oil 5L",
-    "scaling": "fixed",
-    "baseQty": 1,
+    "scaling": "per_100_2days",
+    "baseQty": 1.5,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
-    "category": "Fruit",
+    "category": "Pantry",
     "name": "Crushed Chilli 1kg",
     "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5002397_ea_000pns?name=crushed-chilli"
   },
   {
     "category": "Pantry",
@@ -271,15 +304,17 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5002252_ea_000pns?name=wattie's-fruit-salad-in-syrup"
   },
   {
-    "category": "Fruit",
+    "category": "Pantry",
     "name": "Crushed Garlic 1kg",
     "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5001778_ea_000pns?name=crushed-garlic"
   },
   {
     "category": "Pantry",
@@ -287,15 +322,17 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5002367_ea_000pns?name=wattie's-peach-slices-with-no-added-sugar"
   },
   {
-    "category": "Fruit",
+    "category": "Pantry",
     "name": "Crushed Ginger 1kg",
     "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Pantry",
@@ -303,7 +340,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 14.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5002612_ea_000pns?name=spaghetti-no-5-pasta"
   },
   {
     "category": "Pantry",
@@ -311,7 +349,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5025408_ea_000pns?name=wattie's-baked-beans-in-tomato-sauce"
   },
   {
     "category": "Dairy",
@@ -319,7 +358,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5219345_ea_000pns?name=full-cream-natural-yoghurt"
   },
   {
     "category": "Dairy",
@@ -327,7 +367,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 8.49,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5025999_ea_000pns?name=tasty-cheese"
   },
   {
     "category": "Baking",
@@ -335,7 +376,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 11.49,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5027519_ea_000pns?name=gluten-free-self-raising-flour"
   },
   {
     "category": "Dairy",
@@ -343,7 +385,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 28,
     "unitPrice": 4.45,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5002843_ea_000pns?name=unsalted-butter"
   },
   {
     "category": "Baking",
@@ -351,7 +394,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 8,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5002672_ea_000pns?name=high-grade-white-flour"
   },
   {
     "category": "Dairy",
@@ -359,7 +403,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 6,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5000524_ea_000pns?name=anchor-pure-cream"
   },
   {
     "category": "Baking",
@@ -367,7 +412,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 4,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://paknsaveonline.co.nz/product/5003886_ea_000pns?name=white-sugar"
   },
   {
     "category": "Dairy",
@@ -375,7 +421,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 15,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5201490_ea_000pns?name=standard-milk"
   },
   {
     "category": "Baking",
@@ -383,7 +430,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 4,
     "unitPrice": 2.53,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5002763_ea_000pns?name=soft-brown-sugar"
   },
   {
     "category": "Dairy",
@@ -391,7 +439,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 10,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5009506_ea_000pns?name=supersoft-white-toast-bread"
   },
   {
     "category": "Baking",
@@ -399,7 +448,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5002750_ea_000pns?name=icing-sugar"
   },
   {
     "category": "Dairy",
@@ -407,7 +457,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 20,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5026046_ea_000pns?name=original-sandwich-bread"
   },
   {
     "category": "Baking",
@@ -415,7 +466,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5002772_ea_000pns?name=cocoa-powder"
   },
   {
     "category": "Baking",
@@ -423,7 +475,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5024311_ea_000pns?name=maize-cornflour"
   },
   {
     "category": "Frozen",
@@ -431,7 +484,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 8,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5001091_ea_000pns?name=surimi-crab-flavoured-premium-salad-mix"
   },
   {
     "category": "Baking",
@@ -439,7 +493,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5002652_ea_000pns?name=baking-powder"
   },
   {
     "category": "Frozen",
@@ -447,7 +502,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 5,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5253215_ea_000pns?name=kingfisher-seafood-cooked-and-peeled-shrimps"
   },
   {
     "category": "Baking",
@@ -455,7 +511,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5002626_ea_000pns?name=custard-powder"
   },
   {
     "category": "Frozen",
@@ -463,7 +520,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 4,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5011255_ea_000pns?name=goofy-chocolate-slab-cake"
   },
   {
     "category": "Baking",
@@ -471,7 +529,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://paknsaveonline.co.nz/product/5013488_ea_000pns?name=instant-dry-yeast"
   },
   {
     "category": "Frozen",
@@ -479,7 +538,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://paknsaveonline.co.nz/product/5031845_ea_000pns?name=vanilla-ice-cream"
   },
   {
     "category": "Baking",
@@ -487,7 +547,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5026706_ea_000pns?name=naturals-mixed-herbs"
   },
   {
     "category": "Frozen",
@@ -495,7 +556,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 6,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5012124_ea_000pns?name=asian-stir-fry-mix"
   },
   {
     "category": "Baking",
@@ -503,7 +565,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5003755_ea_000pns?name=hot-curry-powder"
   },
   {
     "category": "Frozen",
@@ -511,23 +574,26 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5003358_ea_000pns?name=garden-peas"
   },
   {
     "category": "Baking",
     "name": "Salt",
-    "scaling": "fixed",
+    "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": 1.93,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5007004_ea_000pns?name=plain-table-salt-seasoning"
   },
   {
     "category": "Baking",
     "name": "Pepper",
-    "scaling": "fixed",
+    "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5003751_ea_000pns?name=ground-black-pepper-seasoning"
   },
   {
     "category": "Cleaning",
@@ -535,7 +601,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 6,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5030695_ea_000pns?name=soft-white-2-ply-toilet-rolls"
   },
   {
     "category": "Other",
@@ -543,15 +610,17 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 4,
     "unitPrice": 4.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5002815_ea_000pns?name=cling-wrap-dispenser"
   },
   {
     "category": "Cleaning",
     "name": "Dishwash",
-    "scaling": "fixed",
+    "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://paknsaveonline.co.nz/product/5001221_ea_000pns?name=lemon-dishwashing-liquid"
   },
   {
     "category": "Other",
@@ -559,7 +628,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 4,
     "unitPrice": 2.69,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5008207_ea_000pns?name=catering-foil-44cm-x-90m"
   },
   {
     "category": "Cleaning",
@@ -567,7 +637,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 4.49,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5257100_ea_000pns?name=fresh-eucalyptus-antibacterial-disinfectant-multi-purpose-spray"
   },
   {
     "category": "Other",
@@ -575,15 +646,17 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 2,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5040579_ea_000pns?name=baking-paper-300mm-wide"
   },
   {
     "category": "Cleaning",
     "name": "Jif Cleanser",
-    "scaling": "fixed",
+    "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5010055_ea_000pns?name=cream"
   },
   {
     "category": "Other",
@@ -591,23 +664,26 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Cleaning",
     "name": "Toilet Cleaner",
-    "scaling": "fixed",
+    "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5221849_ea_000pns?name=marine-splash-fresh-power-toilet-cleaner"
   },
   {
     "category": "Cleaning",
     "name": "Hand Soap / Handwash",
-    "scaling": "fixed",
+    "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://paknsaveonline.co.nz/product/5001673_ea_000pns?name=pure-soap"
   },
   {
     "category": "Meat",
@@ -615,23 +691,26 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 20,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5007056_ea_000pns?name=whole-chicken"
   },
   {
     "category": "Cleaning",
     "name": "Rubbish Bags",
-    "scaling": "fixed",
-    "baseQty": 1,
+    "scaling": "per_100_2days",
+    "baseQty": 2,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5023991_ea_000pns?name=draw-string-rubbish-bags-74cm-x-350cm"
   },
   {
     "category": "Meat",
     "name": "Mince",
-    "scaling": "fixed",
-    "baseQty": 1,
+    "scaling": "per_100_2days",
+    "baseQty": 10,
     "unitPrice": null,
-    "unit": ""
+    "unit": "kg",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5101189_kgm_000pns?name=nz-premium-beef-mince"
   },
   {
     "category": "Cleaning",
@@ -639,7 +718,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 4,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Meat",
@@ -647,7 +727,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 4,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5107896_kgm_000pns?name=italian-sausages"
   },
   {
     "category": "Cleaning",
@@ -655,7 +736,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5002313_ea_000pns?name=universal-sink-plug"
   },
   {
     "category": "Meat",
@@ -663,15 +745,17 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 7,
     "unitPrice": 7.29,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5110831_kgm_000pns?name=bacon-bones"
   },
   {
     "category": "Meat",
     "name": "Steak",
-    "scaling": "fixed",
-    "baseQty": 1,
+    "scaling": "per_100_2days",
+    "baseQty": 15,
     "unitPrice": null,
-    "unit": ""
+    "unit": "kg",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5123919_kgm_000pns?name=nz-beef-sirloin-steak"
   },
   {
     "category": "Seafood",
@@ -679,15 +763,17 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 2,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5229139_ea_000pns?name=frozen-classic-crumbed-fish-fillets"
   },
   {
     "category": "Meat",
     "name": "Pork",
-    "scaling": "fixed",
-    "baseQty": 1,
+    "scaling": "per_100_2days",
+    "baseQty": 15,
     "unitPrice": null,
-    "unit": ""
+    "unit": "kg",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5112039_kgm_000pns?name=nz-trim-pork-pieces"
   },
   {
     "category": "Seafood",
@@ -695,7 +781,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Meat",
@@ -703,7 +790,8 @@ const SEED_ITEMS = [
     "scaling": "per_100_2days",
     "baseQty": 20,
     "unitPrice": 8.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://paknsaveonline.co.nz/product/5110329_kgm_000pns?name=shaved-ham"
   },
   {
     "category": "Lollies & Treats",
@@ -711,7 +799,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 8,
     "unitPrice": 2.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5010518_ea_000pns?name=glucose-energy-barley-sugar-confectionery"
   },
   {
     "category": "Lollies & Treats",
@@ -719,7 +808,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 3,
     "unitPrice": 3.69,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5036607_ea_000pns?name=marshmallow-confectionery"
   },
   {
     "category": "Lollies & Treats",
@@ -727,7 +817,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 4.51,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Lollies & Treats",
@@ -735,7 +826,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 4.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/category/pantry/snack-foods/chips?pg=1"
   },
   {
     "category": "Pantry",
@@ -743,7 +835,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 2,
     "unitPrice": 7.49,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5008163_ea_000pns?name=milo-energy-drink"
   },
   {
     "category": "Pantry",
@@ -751,7 +844,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 2,
     "unitPrice": 1.89,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5206293_ea_000pns?name=instant-coffee-powder"
   },
   {
     "category": "Pantry",
@@ -759,7 +853,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 2,
     "unitPrice": 5.59,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5011232_ea_000pns?name=chicken-2-minute-noodles"
   },
   {
     "category": "Pantry",
@@ -767,7 +862,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 11.29,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5003046_ea_000pns?name=australian-medium-grain-calrose-rice"
   },
   {
     "category": "Pantry",
@@ -775,7 +871,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 4.59,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5023198_ea_000pns?name=raspberry-jam"
   },
   {
     "category": "Pantry",
@@ -783,7 +880,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 6.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5010740_ea_000pns?name=smooth-peanut-butter"
   },
   {
     "category": "Pantry",
@@ -791,7 +889,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 2.89,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5037151_ea_000pns?name=rum-and-honey-pickled-onions"
   },
   {
     "category": "Baking",
@@ -799,7 +898,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 8,
     "unitPrice": 1.41,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsaveonline.co.nz/product/5003311_ea_000pns?name=biscuits"
   },
   {
     "category": "Baking",
@@ -807,7 +907,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 2,
     "unitPrice": 1.89,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5005830_ea_000pns?name=breakfast-crackers"
   },
   {
     "category": "Baking",
@@ -815,7 +916,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 2,
     "unitPrice": 2.49,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5017224_ea_000pns?name=hubbards-simply-fruit--nut-muesli"
   },
   {
     "category": "Baking",
@@ -823,7 +925,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 4.79,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5002662_ea_000pns?name=edmonds-all-purpose-active-yeast"
   },
   {
     "category": "Vegetables",
@@ -831,7 +934,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 2,
     "unitPrice": 2.5,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5039965_kgm_000pns?name=carrots"
   },
   {
     "category": "Vegetables",
@@ -839,7 +943,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 4,
     "unitPrice": 2.48,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5046473_ea_000nw?name=kamo-kamo"
   },
   {
     "category": "Meat",
@@ -847,7 +952,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 3,
     "unitPrice": 8.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5320938_kgm_000pns?name=farmland-nz-boneless-glazing-leg-ham"
   },
   {
     "category": "Meat",
@@ -855,7 +961,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 84,
     "unitPrice": 0.36,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5276265-ea-000?name=beard-brothers-old-school-beef-sausages"
   },
   {
     "category": "Meat",
@@ -863,7 +970,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Meat",
@@ -871,7 +979,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5103795_kgm_000pns?name=nz-mutton-whole-leg"
   },
   {
     "category": "Cleaning",
@@ -879,15 +988,17 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 2.95,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5001673_ea_000pns?name=sunlight-pure-soap"
   },
   {
     "category": "Cleaning",
     "name": "Dishwashing liquid 2ltr",
-    "scaling": "fixed",
+    "scaling": "per_100_2days",
     "baseQty": 1,
     "unitPrice": 1.99,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5001221_ea_000pns?name=sunlight-lemon-dish-wash"
   },
   {
     "category": "Cleaning",
@@ -895,7 +1006,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 3.36,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5013194_ea_000pns?name=firelighters"
   },
   {
     "category": "Cleaning",
@@ -903,7 +1015,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 11.78,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "Other",
@@ -911,7 +1024,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 2,
     "unitPrice": 4.29,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5002808_ea_000pns?name=national-candle-table-candles"
   },
   {
     "category": "Other",
@@ -919,7 +1033,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": 0.61,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5254074_ea_000pns?name=samba-safety-matches"
   },
   {
     "category": "First Aid",
@@ -927,7 +1042,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5220673_ea_000pns?name=antihistamines-tablets-10mg"
   },
   {
     "category": "First Aid",
@@ -935,7 +1051,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5018642_ea_000pns?name=off-tropical-strength-insect-repellent-spray"
   },
   {
     "category": "First Aid",
@@ -943,7 +1060,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5200499_ea_000pns?name=nivea-sun-protect--moisture-sunscreen-spf50%2B"
   },
   {
     "category": "First Aid",
@@ -951,7 +1069,8 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": null
   },
   {
     "category": "First Aid",
@@ -959,6 +1078,7 @@ const SEED_ITEMS = [
     "scaling": "fixed",
     "baseQty": 1,
     "unitPrice": null,
-    "unit": ""
+    "unit": "",
+    "paknsaveUrl": "https://www.paknsave.co.nz/shop/product/5026438_ea_000pns?name=savlon-wound-cleansing-cream-antiseptic"
   }
 ];
