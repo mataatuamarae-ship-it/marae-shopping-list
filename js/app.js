@@ -17,12 +17,16 @@ function renderApp(route) {
 }
 
 // Builds a view-only link to an event's list (same URL, a "share" route
-// instead of "event") and copies it to the clipboard. No login exists in
-// this app, so this is a convenience link, not real access control — anyone
-// who edits the URL's hash could still reach the full app. Good enough for
-// texting the list to whānau who just need to see and tick things off.
-function shareEventLink(evt) {
-  const url = `${location.origin}${location.pathname}#share/${encodeURIComponent(evt.id)}`;
+// instead of "event"). No login exists in this app, so this is a convenience
+// link, not real access control — anyone who edits the URL's hash could
+// still reach the full app. Good enough for sharing the list with whānau
+// who just need to see and tick things off.
+function shareLinkUrl(evt) {
+  return `${location.origin}${location.pathname}#share/${encodeURIComponent(evt.id)}`;
+}
+
+function copyShareLink(evt) {
+  const url = shareLinkUrl(evt);
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(url)
       .then(() => alert('View-only link copied:\n\n' + url))
@@ -30,6 +34,17 @@ function shareEventLink(evt) {
   } else {
     prompt('Copy this view-only link:', url);
   }
+}
+
+// Opens the person's email app with a message already made up — subject and
+// body filled in, view-only link included — so all they do is add who it's
+// going to and hit send.
+function emailShareLink(evt) {
+  const url = shareLinkUrl(evt);
+  const subject = `Shopping list — ${evt.name}`;
+  const body = `Here's the shopping list for ${evt.name} (${evt.people} people · ${evt.days} day${evt.days > 1 ? 's' : ''}).\n\nYou can view it and tick items off as you get them:\n${url}`;
+  const mailto = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
 }
 
 function updateSyncStatus() {
@@ -191,7 +206,8 @@ function ViewEvent(eventId) {
       el('button', { class: 'secondary', onclick: () => openAddItemToEventModal(evt) }, '+ Add item to this list'),
       el('button', { class: 'secondary', onclick: () => openAddRecipeModal(evt) }, '🍲 Add recipe'),
       el('button', { class: 'secondary', onclick: () => openRescaleModal(evt) }, 'Rescale for new headcount'),
-      el('button', { class: 'secondary', onclick: () => shareEventLink(evt) }, '🔗 Share view-only link')
+      el('button', { class: 'secondary', onclick: () => copyShareLink(evt) }, '🔗 Copy view-only link'),
+      el('button', { class: 'secondary', onclick: () => emailShareLink(evt) }, '📧 Email view-only link')
     ])
   ]));
 
