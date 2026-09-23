@@ -63,6 +63,10 @@ body {
   white-space: nowrap;
 }
 
+/* Shared (view-only) event links: no nav back into the rest of the app. */
+body.share-mode #main-nav { display: none; }
+body.share-mode #app-title { cursor: default; pointer-events: none; }
+
 main {
   max-width: 900px;
   margin: 0 auto;

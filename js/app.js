@@ -2,13 +2,34 @@ const App = document.getElementById('app');
 
 function renderApp(route) {
   App.innerHTML = '';
-  if (route.route === 'home') App.appendChild(ViewHome());
+  const isShareRoute = route.route === 'share';
+  document.body.classList.toggle('share-mode', isShareRoute);
+
+  if (isShareRoute) App.appendChild(ViewShareEvent(route.param));
+  else if (route.route === 'home') App.appendChild(ViewHome());
   else if (route.route === 'event') App.appendChild(ViewEvent(route.param));
   else if (route.route === 'items') App.appendChild(ViewItems());
   else if (route.route === 'recipes') App.appendChild(ViewRecipes());
   else if (route.route === 'data') App.appendChild(ViewData());
   else App.appendChild(ViewHome());
-  updateSyncStatus();
+
+  if (!isShareRoute) updateSyncStatus();
+}
+
+// Builds a view-only link to an event's list (same URL, a "share" route
+// instead of "event") and copies it to the clipboard. No login exists in
+// this app, so this is a convenience link, not real access control — anyone
+// who edits the URL's hash could still reach the full app. Good enough for
+// texting the list to whānau who just need to see and tick things off.
+function shareEventLink(evt) {
+  const url = `${location.origin}${location.pathname}#share/${encodeURIComponent(evt.id)}`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url)
+      .then(() => alert('View-only link copied:\n\n' + url))
+      .catch(() => prompt('Copy this view-only link:', url));
+  } else {
+    prompt('Copy this view-only link:', url);
+  }
 }
 
 function updateSyncStatus() {
@@ -169,13 +190,18 @@ function ViewEvent(eventId) {
     el('div', { class: 'row mt8 no-print' }, [
       el('button', { class: 'secondary', onclick: () => openAddItemToEventModal(evt) }, '+ Add item to this list'),
       el('button', { class: 'secondary', onclick: () => openAddRecipeModal(evt) }, '🍲 Add recipe'),
-      el('button', { class: 'secondary', onclick: () => openRescaleModal(evt) }, 'Rescale for new headcount')
+      el('button', { class: 'secondary', onclick: () => openRescaleModal(evt) }, 'Rescale for new headcount'),
+      el('button', { class: 'secondary', onclick: () => shareEventLink(evt) }, '🔗 Share view-only link')
     ])
   ]));
+
+  const searchInput = el('input', { type: 'search', placeholder: '🔍 Search this list…', class: 'no-print', style: 'width:100%; max-width:340px; margin:12px 0;' });
+  wrap.appendChild(searchInput);
 
   const cats = [];
   evt.lines.forEach(l => { if (!cats.includes(l.category)) cats.push(l.category); });
 
+  const catBlocks = []; // { block, rows: [{row, name}] }
   cats.forEach(cat => {
     const lines = evt.lines.filter(l => l.category === cat);
     const catChecked = lines.filter(l => l.checked).length;
@@ -185,11 +211,29 @@ function ViewEvent(eventId) {
         el('span', {}, `${catChecked}/${lines.length}`)
       ])
     ]);
+    const rows = [];
     lines.forEach(line => {
-      block.appendChild(renderEventLine(evt, line));
+      const row = renderEventLine(evt, line);
+      block.appendChild(row);
+      rows.push({ row, name: line.name });
     });
     wrap.appendChild(block);
+    catBlocks.push({ block, rows });
   });
+
+  const applyFilter = () => {
+    const q = searchInput.value.trim().toLowerCase();
+    catBlocks.forEach(({ block, rows }) => {
+      let visibleCount = 0;
+      rows.forEach(({ row, name }) => {
+        const match = !q || name.toLowerCase().includes(q);
+        row.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+      block.style.display = visibleCount > 0 ? '' : 'none';
+    });
+  };
+  searchInput.addEventListener('input', applyFilter);
 
   // totals
   const totalEst = evt.lines.reduce((s, l) => s + (l.actualPrice ?? (l.unitPrice ? l.unitPrice * l.qty : 0)), 0);
@@ -244,6 +288,93 @@ function renderEventLine(evt, line) {
     class: 'remove-item-btn no-print', title: 'Remove from this list',
     onclick: () => { Store.removeEventLine(evt.id, line.id); renderApp(Router.current()); }
   }, '✕'));
+
+  return row;
+}
+
+// ---------- SHARED (view-only) EVENT ----------
+// Same data as ViewEvent, but locked down for whānau who just need to see
+// the list and tick things off while shopping: no quantity/price editing,
+// no add/remove/rescale/delete, and no nav back into the rest of the app
+// (the header itself is hidden in share mode — see index.html/style.css).
+function ViewShareEvent(eventId) {
+  const evt = Store.getEvent(eventId);
+  if (!evt) {
+    return el('div', { class: 'card' }, [el('p', {}, 'This list isn’t available (it may have been deleted).')]);
+  }
+
+  const wrap = el('div');
+  wrap.appendChild(el('div', { class: 'card' }, [
+    el('h2', { class: 'mb8' }, evt.name),
+    el('div', { class: 'text-muted' }, `${evt.people} people · ${evt.days} day${evt.days > 1 ? 's' : ''} · ${fmtDate(evt.date)}`),
+    el('p', { class: 'text-muted mt8' }, 'View-only shopping list — tick items off as you get them.')
+  ]));
+
+  const searchInput = el('input', { type: 'search', placeholder: '🔍 Search this list…', style: 'width:100%; max-width:340px; margin:12px 0;' });
+  wrap.appendChild(searchInput);
+
+  const cats = [];
+  evt.lines.forEach(l => { if (!cats.includes(l.category)) cats.push(l.category); });
+
+  const catBlocks = [];
+  cats.forEach(cat => {
+    const lines = evt.lines.filter(l => l.category === cat);
+    const catChecked = lines.filter(l => l.checked).length;
+    const block = el('div', { class: 'category-block' }, [
+      el('div', { class: 'category-title' }, [
+        el('span', {}, cat),
+        el('span', {}, `${catChecked}/${lines.length}`)
+      ])
+    ]);
+    const rows = [];
+    lines.forEach(line => {
+      const row = renderShareEventLine(evt, line);
+      block.appendChild(row);
+      rows.push({ row, name: line.name });
+    });
+    wrap.appendChild(block);
+    catBlocks.push({ block, rows });
+  });
+
+  const applyFilter = () => {
+    const q = searchInput.value.trim().toLowerCase();
+    catBlocks.forEach(({ block, rows }) => {
+      let visibleCount = 0;
+      rows.forEach(({ row, name }) => {
+        const match = !q || name.toLowerCase().includes(q);
+        row.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+      block.style.display = visibleCount > 0 ? '' : 'none';
+    });
+  };
+  searchInput.addEventListener('input', applyFilter);
+
+  const totalChecked = evt.lines.filter(l => l.checked).length;
+  wrap.appendChild(el('div', { class: 'totals-bar' }, [
+    el('div', {}, `${totalChecked}/${evt.lines.length} items checked`)
+  ]));
+
+  return wrap;
+}
+
+function renderShareEventLine(evt, line) {
+  const row = el('div', { class: 'item-row' + (line.checked ? ' checked' : '') });
+
+  const checkbox = el('input', {
+    type: 'checkbox',
+    onchange: (e) => {
+      Store.updateEventLine(evt.id, line.id, { checked: e.target.checked });
+      renderApp(Router.current());
+    }
+  });
+  checkbox.checked = line.checked;
+  row.appendChild(checkbox);
+
+  row.appendChild(el('div', { class: 'item-name' }, line.name));
+  row.appendChild(el('div', { class: 'item-qty-group' }, [
+    el('span', {}, String(line.qty)), el('span', { class: 'text-muted' }, ' ' + (line.unit || ''))
+  ]));
 
   return row;
 }
@@ -326,27 +457,51 @@ function openAddItemToEventModal(evt) {
     listWrap.appendChild(el('p', { class: 'text-muted', style: 'padding:12px' }, 'Every master item is already on this list. Add new items in “Manage Items” first.'));
   }
 
+  const catEntries = []; // { details, summary, catLabel, catItems, labels: [{label, name}] }
   cats.forEach(cat => {
     const catItems = remaining.filter(i => i.category === cat);
     const details = el('details', { open: cats.length <= 3 ? 'open' : null });
-    details.appendChild(el('summary', { style: 'padding:8px 12px; cursor:pointer; font-weight:600; background:#f6f1e7;' }, `${cat} (${catItems.length})`));
+    const summary = el('summary', { style: 'padding:8px 12px; cursor:pointer; font-weight:600; background:#f6f1e7;' }, `${cat} (${catItems.length})`);
+    details.appendChild(summary);
     const body = el('div', { style: 'padding:4px 12px 8px;' });
+    const labels = [];
     catItems.forEach(it => {
       const cb = el('input', {
         type: 'checkbox',
         onchange: (e) => { if (e.target.checked) checkedIds.add(it.id); else checkedIds.delete(it.id); }
       });
-      body.appendChild(el('label', { style: 'display:flex; align-items:center; gap:8px; padding:5px 0; cursor:pointer;' }, [
+      const label = el('label', { style: 'display:flex; align-items:center; gap:8px; padding:5px 0; cursor:pointer;' }, [
         cb, el('span', {}, it.name)
-      ]));
+      ]);
+      body.appendChild(label);
+      labels.push({ label, name: it.name });
     });
     details.appendChild(body);
     listWrap.appendChild(details);
+    catEntries.push({ details, summary, cat, labels });
   });
+
+  const searchInput = el('input', { type: 'search', placeholder: '🔍 Search items…', style: 'width:100%; margin-bottom:10px;' });
+  const applyFilter = () => {
+    const q = searchInput.value.trim().toLowerCase();
+    catEntries.forEach(({ details, summary, cat, labels }) => {
+      let visibleCount = 0;
+      labels.forEach(({ label, name }) => {
+        const match = !q || name.toLowerCase().includes(q);
+        label.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+      details.style.display = visibleCount > 0 ? '' : 'none';
+      summary.textContent = `${cat} (${visibleCount})`;
+      if (q) details.open = visibleCount > 0;
+    });
+  };
+  searchInput.addEventListener('input', applyFilter);
 
   const box = el('div', {}, [
     el('h3', {}, 'Add items to this list'),
-    el('p', { class: 'text-muted' }, 'Browse by category and tick everything you want to add.'),
+    el('p', { class: 'text-muted' }, 'Browse by category and tick everything you want to add, or search by name.'),
+    remaining.length > 0 ? searchInput : null,
     listWrap,
     el('div', { class: 'row mt16', style: 'justify-content:flex-end' }, [
       el('button', { class: 'secondary', onclick: closeModal }, 'Close'),
@@ -633,10 +788,29 @@ function ViewItems() {
   const defaultCount = Store.getDefaultListItems().length;
   wrap.appendChild(el('p', { class: 'badge' }, `${defaultCount} of ${Store.getItems().length} items in default list`));
 
+  const searchInput = el('input', { type: 'search', placeholder: '🔍 Search items…', style: 'width:100%; max-width:340px; margin-bottom:12px;' });
+  wrap.appendChild(searchInput);
+
+  const catBlocks = []; // { block, rows: [{tr, name}] }
+  const applyFilter = () => {
+    const q = searchInput.value.trim().toLowerCase();
+    catBlocks.forEach(({ block, rows }) => {
+      let visibleCount = 0;
+      rows.forEach(({ tr, name }) => {
+        const match = !q || name.toLowerCase().includes(q);
+        tr.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+      block.style.display = visibleCount > 0 ? '' : 'none';
+    });
+  };
+  searchInput.addEventListener('input', applyFilter);
+
   const cats = Store.getCategories();
   cats.forEach(cat => {
     const items = Store.getItems().filter(i => i.category === cat);
     const block = el('div', { class: 'card' });
+    const rows = [];
     block.appendChild(el('h3', {}, cat));
     const table = el('table', { class: 'manage-table' }, [
       el('tr', {}, [
@@ -650,7 +824,7 @@ function ViewItems() {
         onchange: (e) => { Store.updateItem(it.id, { inDefaultList: e.target.checked }); renderApp(Router.current()); }
       });
       defaultCb.checked = it.inDefaultList !== false;
-      table.appendChild(el('tr', {}, [
+      const tr = el('tr', {}, [
         el('td', {}, it.name),
         el('td', {}, it.scaling === 'per_100_2days' ? 'Scales (per 100 people / 2 days)' : 'Fixed'),
         el('td', {}, String(it.baseQty)),
@@ -663,12 +837,16 @@ function ViewItems() {
           el('button', { class: 'icon-btn', title: 'Edit', onclick: () => openItemEditModal(it) }, '✏️'),
           el('button', { class: 'icon-btn', title: 'Delete', onclick: () => { if (confirm(`Delete "${it.name}" from the master list?`)) { Store.deleteItem(it.id); renderApp(Router.current()); } } }, '🗑️')
         ])
-      ]));
+      ]);
+      table.appendChild(tr);
+      rows.push({ tr, name: it.name });
     });
     block.appendChild(table);
     wrap.appendChild(block);
+    catBlocks.push({ block, rows });
   });
 
+  applyFilter();
   return wrap;
 }
 
