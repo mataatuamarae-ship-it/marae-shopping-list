@@ -16,6 +16,29 @@ function renderApp(route) {
   if (!isShareRoute) updateSyncStatus();
 }
 
+// Shared by every screen that lists rows grouped into category blocks with a
+// search box above them (ViewEvent, ViewShareEvent, ViewItems): hides rows
+// that don't match the typed text, and hides a whole category block once
+// none of its rows match. `blocks` is [{ container, rows: [{ el, name }] }].
+// Returns the filter function so a caller can also run it once up front
+// (ViewItems does, to make sure state is consistent on first render).
+function attachSearchFilter(searchInput, blocks) {
+  const applyFilter = () => {
+    const q = searchInput.value.trim().toLowerCase();
+    blocks.forEach(({ container, rows }) => {
+      let visibleCount = 0;
+      rows.forEach(({ el, name }) => {
+        const match = !q || name.toLowerCase().includes(q);
+        el.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+      container.style.display = visibleCount > 0 ? '' : 'none';
+    });
+  };
+  searchInput.addEventListener('input', applyFilter);
+  return applyFilter;
+}
+
 // Builds a view-only link to an event's list (same URL, a "share" route
 // instead of "event"). No login exists in this app, so this is a convenience
 // link, not real access control — anyone who edits the URL's hash could
@@ -217,7 +240,7 @@ function ViewEvent(eventId) {
   const cats = [];
   evt.lines.forEach(l => { if (!cats.includes(l.category)) cats.push(l.category); });
 
-  const catBlocks = []; // { block, rows: [{row, name}] }
+  const catBlocks = []; // { container, rows: [{el, name}] }
   cats.forEach(cat => {
     const lines = evt.lines.filter(l => l.category === cat);
     const catChecked = lines.filter(l => l.checked).length;
@@ -231,25 +254,13 @@ function ViewEvent(eventId) {
     lines.forEach(line => {
       const row = renderEventLine(evt, line);
       block.appendChild(row);
-      rows.push({ row, name: line.name });
+      rows.push({ el: row, name: line.name });
     });
     wrap.appendChild(block);
-    catBlocks.push({ block, rows });
+    catBlocks.push({ container: block, rows });
   });
 
-  const applyFilter = () => {
-    const q = searchInput.value.trim().toLowerCase();
-    catBlocks.forEach(({ block, rows }) => {
-      let visibleCount = 0;
-      rows.forEach(({ row, name }) => {
-        const match = !q || name.toLowerCase().includes(q);
-        row.style.display = match ? '' : 'none';
-        if (match) visibleCount++;
-      });
-      block.style.display = visibleCount > 0 ? '' : 'none';
-    });
-  };
-  searchInput.addEventListener('input', applyFilter);
+  attachSearchFilter(searchInput, catBlocks);
 
   // totals
   const totalEst = evt.lines.reduce((s, l) => s + (l.actualPrice ?? (l.unitPrice ? l.unitPrice * l.qty : 0)), 0);
@@ -264,7 +275,7 @@ function ViewEvent(eventId) {
   return wrap;
 }
 
-function renderEventLine(evt, line) {
+function renderEventLine(evt, line, { readOnly = false } = {}) {
   const row = el('div', { class: 'item-row' + (line.checked ? ' checked' : '') });
 
   const checkbox = el('input', {
@@ -278,6 +289,13 @@ function renderEventLine(evt, line) {
   row.appendChild(checkbox);
 
   row.appendChild(el('div', { class: 'item-name' }, line.name));
+
+  if (readOnly) {
+    row.appendChild(el('div', { class: 'item-qty-group' }, [
+      el('span', {}, String(line.qty)), el('span', { class: 'text-muted' }, ' ' + (line.unit || ''))
+    ]));
+    return row;
+  }
 
   const qtyInput = el('input', {
     type: 'number', min: '0', value: line.qty,
@@ -326,13 +344,13 @@ function ViewShareEvent(eventId) {
     el('p', { class: 'text-muted mt8' }, 'View-only shopping list — tick items off as you get them.')
   ]));
 
-  const searchInput = el('input', { type: 'search', placeholder: '🔍 Search this list…', style: 'width:100%; max-width:340px; margin:12px 0;' });
+  const searchInput = el('input', { type: 'search', placeholder: '🔍 Search this list…', class: 'no-print', style: 'width:100%; max-width:340px; margin:12px 0;' });
   wrap.appendChild(searchInput);
 
   const cats = [];
   evt.lines.forEach(l => { if (!cats.includes(l.category)) cats.push(l.category); });
 
-  const catBlocks = [];
+  const catBlocks = []; // { container, rows: [{el, name}] }
   cats.forEach(cat => {
     const lines = evt.lines.filter(l => l.category === cat);
     const catChecked = lines.filter(l => l.checked).length;
@@ -344,27 +362,15 @@ function ViewShareEvent(eventId) {
     ]);
     const rows = [];
     lines.forEach(line => {
-      const row = renderShareEventLine(evt, line);
+      const row = renderEventLine(evt, line, { readOnly: true });
       block.appendChild(row);
-      rows.push({ row, name: line.name });
+      rows.push({ el: row, name: line.name });
     });
     wrap.appendChild(block);
-    catBlocks.push({ block, rows });
+    catBlocks.push({ container: block, rows });
   });
 
-  const applyFilter = () => {
-    const q = searchInput.value.trim().toLowerCase();
-    catBlocks.forEach(({ block, rows }) => {
-      let visibleCount = 0;
-      rows.forEach(({ row, name }) => {
-        const match = !q || name.toLowerCase().includes(q);
-        row.style.display = match ? '' : 'none';
-        if (match) visibleCount++;
-      });
-      block.style.display = visibleCount > 0 ? '' : 'none';
-    });
-  };
-  searchInput.addEventListener('input', applyFilter);
+  attachSearchFilter(searchInput, catBlocks);
 
   const totalChecked = evt.lines.filter(l => l.checked).length;
   wrap.appendChild(el('div', { class: 'totals-bar' }, [
@@ -372,27 +378,6 @@ function ViewShareEvent(eventId) {
   ]));
 
   return wrap;
-}
-
-function renderShareEventLine(evt, line) {
-  const row = el('div', { class: 'item-row' + (line.checked ? ' checked' : '') });
-
-  const checkbox = el('input', {
-    type: 'checkbox',
-    onchange: (e) => {
-      Store.updateEventLine(evt.id, line.id, { checked: e.target.checked });
-      renderApp(Router.current());
-    }
-  });
-  checkbox.checked = line.checked;
-  row.appendChild(checkbox);
-
-  row.appendChild(el('div', { class: 'item-name' }, line.name));
-  row.appendChild(el('div', { class: 'item-qty-group' }, [
-    el('span', {}, String(line.qty)), el('span', { class: 'text-muted' }, ' ' + (line.unit || ''))
-  ]));
-
-  return row;
 }
 
 function openEditEventModal(evt) {
@@ -442,6 +427,7 @@ function openRescaleModal(evt) {
       el('button', { class: 'secondary', onclick: closeModal }, 'Cancel'),
       el('button', {
         class: 'primary', onclick: () => {
+          if (!confirm('This will recalculate every quantity on this list and overwrite what\'s there now. Continue?')) return;
           const people = parseInt(peopleInput.value, 10) || evt.people;
           const days = parseInt(daysInput.value, 10) || evt.days;
           const items = Store.getItems();
@@ -807,20 +793,7 @@ function ViewItems() {
   const searchInput = el('input', { type: 'search', placeholder: '🔍 Search items…', style: 'width:100%; max-width:340px; margin-bottom:12px;' });
   wrap.appendChild(searchInput);
 
-  const catBlocks = []; // { block, rows: [{tr, name}] }
-  const applyFilter = () => {
-    const q = searchInput.value.trim().toLowerCase();
-    catBlocks.forEach(({ block, rows }) => {
-      let visibleCount = 0;
-      rows.forEach(({ tr, name }) => {
-        const match = !q || name.toLowerCase().includes(q);
-        tr.style.display = match ? '' : 'none';
-        if (match) visibleCount++;
-      });
-      block.style.display = visibleCount > 0 ? '' : 'none';
-    });
-  };
-  searchInput.addEventListener('input', applyFilter);
+  const catBlocks = []; // { container, rows: [{el, name}] }
 
   const cats = Store.getCategories();
   cats.forEach(cat => {
@@ -855,14 +828,14 @@ function ViewItems() {
         ])
       ]);
       table.appendChild(tr);
-      rows.push({ tr, name: it.name });
+      rows.push({ el: tr, name: it.name });
     });
     block.appendChild(table);
     wrap.appendChild(block);
-    catBlocks.push({ block, rows });
+    catBlocks.push({ container: block, rows });
   });
 
-  applyFilter();
+  attachSearchFilter(searchInput, catBlocks)();
   return wrap;
 }
 
@@ -890,13 +863,19 @@ function openItemEditModal(item) {
 
   const box = el('div', {}, [
     el('h3', {}, isNew ? 'Add item' : 'Edit item'),
+
+    el('h4', { class: 'text-muted mt8 mb8' }, 'Basics'),
     el('div', { class: 'field mb8' }, [el('label', {}, 'Item name'), nameInput]),
     el('div', { class: 'field mb8' }, [el('label', {}, 'Category'), catSelect, newCatInput]),
+
+    el('h4', { class: 'text-muted mt16 mb8' }, 'Scaling'),
     el('div', { class: 'field mb8' }, [el('label', {}, 'Scaling'), scalingSelect]),
     el('div', { class: 'field mb8' }, [
       el('label', {}, 'Base quantity (at 100 people / 2 days if scaling, otherwise the fixed amount)'),
       baseQtyInput
     ]),
+
+    el('h4', { class: 'text-muted mt16 mb8' }, 'Shopping'),
     el('div', { class: 'field mb8' }, [el('label', {}, 'Unit price ($, optional — used to estimate cost)'), priceInput]),
     el('div', { class: 'field mb8' }, [el('label', {}, 'PAK’nSAVE link (optional)'), paknsaveUrlInput]),
     el('label', { class: 'row mb8', style: 'align-items:center; gap:8px; cursor:pointer;' }, [

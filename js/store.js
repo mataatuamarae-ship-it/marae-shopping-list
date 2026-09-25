@@ -26,12 +26,14 @@ function uuid() {
 
 const dbItem = (it) => ({
   id: it.id, category: it.category, name: it.name, scaling: it.scaling,
-  base_qty: it.baseQty, unit_price: it.unitPrice, in_default_list: it.inDefaultList !== false
+  base_qty: it.baseQty, unit_price: it.unitPrice, in_default_list: it.inDefaultList !== false,
+  unit: it.unit || null, paknsave_url: it.paknsaveUrl || null
 });
 const fromDbItem = (r) => ({
   id: r.id, category: r.category, name: r.name, scaling: r.scaling,
   baseQty: Number(r.base_qty), unitPrice: r.unit_price != null ? Number(r.unit_price) : null,
-  inDefaultList: r.in_default_list !== false
+  inDefaultList: r.in_default_list !== false,
+  unit: r.unit || '', paknsaveUrl: r.paknsave_url || null
 });
 
 const dbEvent = (e) => ({
@@ -87,61 +89,7 @@ const Store = {
       this._online = false;
     }
     this._migrateRecipeIngredientLinks();
-    this._migrateItemAdjustments();
-    this._migratePaknsaveUrls();
     return this._data;
-  },
-
-  // One-time self-healing fix: applies the "shopping list review" changes
-  // (scaling.marae-shopping-app doc, 20 Sept 2026) to already-synced master
-  // items — miscategorized spice items, and meat/cleaning/pantry items that
-  // were "fixed" and should scale with headcount. Guarded by its own
-  // localStorage flag (separate from the main data blob, since that gets
-  // fully replaced on every Supabase refetch) so it only ever runs once per
-  // device and never overwrites a manual edit made after that.
-  _migrateItemAdjustments() {
-    const FLAG_KEY = 'marae_shopping_item_adjustments_v1';
-    if (localStorage.getItem(FLAG_KEY)) return;
-    const ADJUSTMENTS = [
-      { name: 'Crushed Chilli 1kg', patch: { category: 'Pantry' } },
-      { name: 'Crushed Garlic 1kg', patch: { category: 'Pantry' } },
-      { name: 'Crushed Ginger 1kg', patch: { category: 'Pantry' } },
-      { name: 'Mince', patch: { scaling: 'per_100_2days', baseQty: 10, unit: 'kg' } },
-      { name: 'Steak', patch: { scaling: 'per_100_2days', baseQty: 15, unit: 'kg' } },
-      { name: 'Pork', patch: { scaling: 'per_100_2days', baseQty: 15, unit: 'kg' } },
-      { name: 'Rubbish Bags', patch: { scaling: 'per_100_2days', baseQty: 2 } },
-      { name: 'Dishwashing liquid 2ltr', patch: { scaling: 'per_100_2days' } },
-      { name: 'Dishwash', patch: { scaling: 'per_100_2days' } },
-      { name: 'Toilet Cleaner', patch: { scaling: 'per_100_2days' } },
-      { name: 'Hand Soap / Handwash', patch: { scaling: 'per_100_2days' } },
-      { name: 'Jif Cleanser', patch: { scaling: 'per_100_2days' } },
-      { name: 'Salt', patch: { scaling: 'per_100_2days' } },
-      { name: 'Pepper', patch: { scaling: 'per_100_2days' } },
-      { name: 'Cooking Oil 5L', patch: { scaling: 'per_100_2days', baseQty: 1.5 } }
-    ];
-    ADJUSTMENTS.forEach(({ name, patch }) => {
-      const item = this._data.items.find(i => i.name === name);
-      if (item) this.updateItem(item.id, patch);
-    });
-    localStorage.setItem(FLAG_KEY, '1');
-  },
-
-  // One-time self-healing fix: backfills each master item's local-only
-  // "paknsaveUrl" (matched PAK'nSAVE product link, from the "PAK'nSAVE
-  // Product Matches" doc, 20 Sept 2026) onto already-synced items, matched
-  // by name against SEED_ITEMS. Guarded by its own localStorage flag so it
-  // only ever runs once per device and never overwrites a manual edit.
-  _migratePaknsaveUrls() {
-    const FLAG_KEY = 'marae_shopping_paknsave_urls_v1';
-    if (localStorage.getItem(FLAG_KEY)) return;
-    if (typeof SEED_ITEMS === 'undefined') return;
-    const urlByName = {};
-    SEED_ITEMS.forEach(s => { if (s.paknsaveUrl) urlByName[s.name] = s.paknsaveUrl; });
-    (this._data.items || []).forEach(item => {
-      const url = urlByName[item.name];
-      if (url && !item.paknsaveUrl) this.updateItem(item.id, { paknsaveUrl: url });
-    });
-    localStorage.setItem(FLAG_KEY, '1');
   },
 
   // One-time self-healing fix: recipes saved before ingredients had a
@@ -246,21 +194,9 @@ const Store = {
     if (linesRes.error) throw linesRes.error;
     if (recipesRes.error) throw recipesRes.error;
 
-    // "unit" (e.g. "kg") and "paknsaveUrl" aren't synced columns — they're
-    // local-only fields — so carry each item's existing local values forward
-    // instead of letting a refetch wipe them out.
-    const localUnitById = {};
-    const localUrlById = {};
-    (this._data.items || []).forEach(it => {
-      if (it.unit) localUnitById[it.id] = it.unit;
-      if (it.paknsaveUrl) localUrlById[it.id] = it.paknsaveUrl;
-    });
-    const items = itemsRes.data.map(r => {
-      const it = fromDbItem(r);
-      if (localUnitById[it.id]) it.unit = localUnitById[it.id];
-      if (localUrlById[it.id]) it.paknsaveUrl = localUrlById[it.id];
-      return it;
-    });
+    // "unit" and "paknsave_url" are now real synced columns, so the fetched
+    // row is the source of truth — no local-only preservation needed.
+    const items = itemsRes.data.map(fromDbItem);
     const events = eventsRes.data.map(fromDbEvent);
     const recipes = recipesRes.data.map(fromDbRecipe);
     const byEvent = {};

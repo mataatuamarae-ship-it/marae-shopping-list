@@ -1,5 +1,5 @@
 // Bump this whenever you change any cached file, so devices pick up the update.
-const CACHE_NAME = 'marae-shopping-v2';
+const CACHE_NAME = 'marae-shopping-v3';
 
 // Must all succeed — same-origin files that are always reachable once deployed.
 const CORE_PRECACHE_URLS = [
